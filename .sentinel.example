@@ -1,0 +1,18 @@
+productDescription: Example project
+stack:
+  - TypeScript
+  - VS Code
+preferredLibraries:
+  - js-yaml
+antiPatterns:
+  - Hardcoded secrets
+designRules:
+  - Keep output machine-readable
+requirements:
+  - No telemetry
+carryOverRules:
+  - Preserve existing architecture
+promptTemplate: ""
+defaultMode: passive
+allowGitBootstrap: true
+allowFileWatcherFallback: true

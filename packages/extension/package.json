@@ -1,0 +1,110 @@
+{
+  "name": "sentinel-vscode",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "icon": "media/icon.png",
+  "main": "dist/extension.js",
+  "publisher": "simplemanslab",
+  "displayName": "Sentinel",
+  "description": "Sentinel VS Code extension with shared brand chrome for local-first memory and consistency.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simplemanslab/sentinel.git"
+  },
+  "files": [
+    "dist",
+    "media",
+    "LICENSE"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "sentinel",
+    "memory",
+    "consistency",
+    "ai",
+    "productivity",
+    "vscode"
+  ],
+  "galleryBanner": {
+    "color": "#08101d",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:sentinel.sidebar",
+    "onCommand:sentinel.startSession",
+    "onCommand:sentinel.endSession",
+    "onCommand:sentinel.copyBootstrap",
+    "onCommand:sentinel.initProject",
+    "onCommand:sentinel.exportReport",
+    "onCommand:sentinel.syncVault",
+    "onCommand:sentinel.logDecision",
+    "onCommand:sentinel.addOverride",
+    "onCommand:sentinel.resolveContradiction",
+    "onCommand:sentinel.openSidebar"
+  ],
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --experimental-test-isolation=none",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "package": "vsce package --no-dependencies"
+  },
+  "keywords": [
+    "sentinel",
+    "memory",
+    "consistency",
+    "ai",
+    "vscode"
+  ],
+  "dependencies": {
+    "@sentinel/core": "file:../core",
+    "@sentinel/guardian": "file:../guardian",
+    "@sentinel/vault": "file:../vault",
+    "@sentinel/llm": "file:../llm"
+  },
+  "contributes": {
+    "commands": [
+      { "command": "sentinel.startSession", "title": "Sentinel: Start Session" },
+      { "command": "sentinel.endSession", "title": "Sentinel: End Session" },
+      { "command": "sentinel.copyBootstrap", "title": "Sentinel: Copy Bootstrap" },
+      { "command": "sentinel.initProject", "title": "Sentinel: Initialize Project" },
+      { "command": "sentinel.exportReport", "title": "Sentinel: Open Latest Report" },
+      { "command": "sentinel.syncVault", "title": "Sentinel: Sync Global Vault" },
+      { "command": "sentinel.logDecision", "title": "Sentinel: Log Decision" },
+      { "command": "sentinel.addOverride", "title": "Sentinel: Add Override" },
+      { "command": "sentinel.resolveContradiction", "title": "Sentinel: Resolve Contradiction" },
+      { "command": "sentinel.openSidebar", "title": "Sentinel: Open Sidebar" }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "sentinel",
+          "title": "Sentinel",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "sentinel": [
+        {
+          "id": "sentinel.sidebar",
+          "name": "Sentinel"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "vsce": "^2.15.0",
+    "typescript": "^5.6.3",
+    "@types/node": "^22.10.2",
+    "@types/vscode": "^1.88.0"
+  }
+}

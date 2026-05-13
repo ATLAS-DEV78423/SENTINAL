@@ -1,0 +1,23 @@
+{
+  "name": "sentinel",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sentinel: local-first memory and consistency with a shared CLI and VS Code brand system.",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @sentinel/core && npm run build -w @sentinel/vault && npm run build -w @sentinel/llm && npm run build -w @sentinel/analyzer && npm run build -w @sentinel/guardian && npm run build -w @sentinel/webview && npm run build -w @sentinel/cli && npm run build -w sentinel-vscode",
+    "lint": "npm run lint -ws --if-present",
+    "test": "npm run build && npm run test -ws --if-present",
+    "verify": "npm run build && npm run lint && npm run test && npm run package",
+    "clean": "npm run clean -ws --if-present",
+    "package": "npm run package -w sentinel-vscode --if-present"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/js-yaml": "^4.0.9",
+    "typescript": "^5.6.3"
+  }
+}

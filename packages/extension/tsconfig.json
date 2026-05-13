@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": true,
+    "lib": ["ES2022", "DOM"],
+    "types": ["node", "vscode"]
+  },
+  "include": ["src/**/*.ts"],
+  "references": [
+    { "path": "../core" },
+    { "path": "../guardian" },
+    { "path": "../vault" },
+    { "path": "../llm" }
+  ]
+}

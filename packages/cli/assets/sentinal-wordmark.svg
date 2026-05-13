@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Sentinal wordmark</title>
+  <desc id="desc">A Sentinel wordmark in green and gold on a dark field.</desc>
+  <rect width="920" height="220" rx="34" fill="#0B1020"/>
+  <path d="M78 146c20 18 48 28 82 28 38 0 58-12 58-35 0-22-18-30-58-37-41-7-64-17-64-49 0-34 29-55 73-55 28 0 54 7 74 22l-14 26c-18-12-39-19-61-19-27 0-43 10-43 25 0 18 17 24 55 31 47 8 69 21 69 55 0 39-31 63-84 63-36 0-69-10-92-30l25-25Z" fill="#D4AF37"/>
+  <path d="M258 47h32v126h-32V47Zm23 0h34l62 90h1V47h31v126h-33l-63-90h-1v90h-31V47Z" fill="#22C55E"/>
+  <path d="M434 47h34l55 126h-34l-10-25h-56l-10 25h-33l54-126Zm15 33-19 47h38l-19-47Z" fill="#D4AF37"/>
+  <path d="M544 47h31v93h61v33h-92V47Zm118 0h31v126h-31V47Zm65 0h34l55 81h1V47h31v126h-34l-55-81h-1v81h-31V47Z" fill="#22C55E"/>
+  <path d="M750 47h31v126h-31V47Zm38 0h34l32 51 32-51h34l-52 80v46h-31v-46l-49-80Z" fill="#D4AF37"/>
+  <path d="M74 182h770" stroke="#243047" stroke-width="2" opacity=".8"/>
+  <circle cx="856" cy="182" r="8" fill="#22C55E"/>
+</svg>

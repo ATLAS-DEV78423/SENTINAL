@@ -1,0 +1,16 @@
+node_modules
+dist
+coverage
+.DS_Store
+*.log
+.env
+.env.*
+*.key
+*.pem
+*.secret
+packages/*/dist
+packages/*/out
+tmp
+render_out
+*.vsix
+.sentinel

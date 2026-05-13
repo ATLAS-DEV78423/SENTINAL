@@ -1,0 +1,22 @@
+{
+  "name": "@sentinel/cli",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sentinel CLI with a shared avatar, SENTINAL wordmark reveal, and local-first memory.",
+  "bin": {
+    "sentinel": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --experimental-test-isolation=none",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\""
+  },
+  "dependencies": {
+    "@sentinel/core": "file:../core",
+    "@sentinel/guardian": "file:../guardian"
+  }
+}
