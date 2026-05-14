@@ -139,7 +139,7 @@ export function summarizeFile(pathName: string, content: string): FileSnapshot {
     interfaces,
     imports,
     usesAsyncAwait: /\basync\b|\bawait\b/.test(content),
-    usesCallbacks: /\bcallback\b|\bcb\b|=>/.test(content) && !/\basync\b/.test(content),
+    usesCallbacks: /\bcallback\b|\bcb\b/.test(content),
     hasSecrets: hasSecrets(content),
     nestedDepth: countNestedDepth(content),
     functionCount: countFunctions(content),

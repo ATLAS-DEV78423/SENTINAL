@@ -5,7 +5,6 @@ import yaml from "js-yaml";
 import {
   DecisionRecord,
   ContradictionRecord,
-  FindingRecord,
   PatternRecord,
   ProjectConfig,
   SessionRecord,
@@ -288,7 +287,12 @@ export class SentinelVault {
   async saveToolEvent(record: ToolEventRecord): Promise<string> {
     await this.ensureProjectStructure();
     const filePath = path.join(this.paths.vaultDir, "tool-events.md");
-    const text = (await exists(filePath)) ? await readFile(filePath, "utf8") : stringifyMarkdownEntry({ events: [] }, "# Tool Events\n");
+    let text: string;
+    try {
+      text = await readFile(filePath, "utf8");
+    } catch {
+      text = stringifyMarkdownEntry({ events: [] }, "# Tool Events\n");
+    }
     const next = `${text}\n- ${record.createdAt} ${record.tool}: ${record.requestSummary} -> ${record.responseSummary}`;
     await writeFile(filePath, next.trimEnd() + "\n", "utf8");
     return filePath;

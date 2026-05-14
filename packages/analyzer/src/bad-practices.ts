@@ -194,17 +194,18 @@ export function detectBadPractices(
     );
   }
 
-  const namingMismatch = snapshot.exportedFunctions.filter((fn: FileSnapshot["exportedFunctions"][number]) => /^[a-z]/.test(fn.name) && /[A-Z]/.test(fn.name));
-  if (namingMismatch.length > 0) {
+  const hasCamelCase = snapshot.exportedFunctions.some((fn: FileSnapshot["exportedFunctions"][number]) => /^[a-z]/.test(fn.name));
+  const hasPascalCase = snapshot.exportedFunctions.some((fn: FileSnapshot["exportedFunctions"][number]) => /^[A-Z]/.test(fn.name));
+  if (hasCamelCase && hasPascalCase) {
     findings.push(
       makeFinding(
         sessionId,
         projectPath,
         "Inconsistent naming style",
-        "Some exported symbols mix naming conventions.",
+        "The file mixes camelCase and PascalCase exported symbols.",
         "info",
         "consistency",
-        namingMismatch.map((fn: FileSnapshot["exportedFunctions"][number]) => fn.name),
+        snapshot.exportedFunctions.map((fn: FileSnapshot["exportedFunctions"][number]) => fn.name),
         [file],
         index + findings.length
       )

@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 import path from "node:path";
-import os from "node:os";
 import { access } from "node:fs/promises";
 import { SENTINEL_EVENTS } from "@sentinel/core";
 import { ProjectConfig, STACK_TEMPLATES } from "@sentinel/core";
@@ -47,46 +46,51 @@ class SentinelSidebarProvider implements vscode.WebviewViewProvider {
     webviewView.webview.html = buildSidebarHtml(webviewView.webview, this.extensionUri);
     this.controller.attachWebview(webviewView.webview);
     webviewView.webview.onDidReceiveMessage(async (message) => {
-      if (message?.type !== "sentinel/command") {
-        return;
-      }
-      switch (message.command) {
-        case "start":
-          await this.controller.startSession();
-          break;
-        case "end":
-          await this.controller.endSession();
-          break;
-        case "copy":
-          await this.controller.copyBootstrap();
-          break;
-        case "save-bootstrap":
-          await this.controller.saveBootstrap(message.content ?? "");
-          break;
-        case "regenerate-bootstrap":
-          await this.controller.regenerateBootstrap();
-          break;
-        case "logDecision":
-          await this.controller.logDecision();
-          break;
-        case "addOverride":
-          await this.controller.addOverride();
-          break;
-        case "resolveContradiction":
-          await this.controller.resolveContradiction();
-          break;
-        case "save-provider-preferences":
-          await this.controller.saveProviderPreferences(message.preferences ?? {});
-          break;
-        case "save-provider-secret":
-          await this.controller.saveProviderSecret(message.provider, message.value ?? "");
-          break;
-        case "clear-provider-secret":
-          await this.controller.clearProviderSecret(message.provider);
-          break;
-        case "test-provider-connection":
-          await this.controller.testProviderConnection(message.provider);
-          break;
+      try {
+        if (message?.type !== "sentinel/command") {
+          return;
+        }
+        switch (message.command) {
+          case "start":
+            await this.controller.startSession();
+            break;
+          case "end":
+            await this.controller.endSession();
+            break;
+          case "copy":
+            await this.controller.copyBootstrap();
+            break;
+          case "save-bootstrap":
+            await this.controller.saveBootstrap(message.content ?? "");
+            break;
+          case "regenerate-bootstrap":
+            await this.controller.regenerateBootstrap();
+            break;
+          case "logDecision":
+            await this.controller.logDecision();
+            break;
+          case "addOverride":
+            await this.controller.addOverride();
+            break;
+          case "resolveContradiction":
+            await this.controller.resolveContradiction();
+            break;
+          case "save-provider-preferences":
+            await this.controller.saveProviderPreferences(message.preferences ?? {});
+            break;
+          case "save-provider-secret":
+            await this.controller.saveProviderSecret(message.provider, message.value ?? "");
+            break;
+          case "clear-provider-secret":
+            await this.controller.clearProviderSecret(message.provider);
+            break;
+          case "test-provider-connection":
+            await this.controller.testProviderConnection(message.provider);
+            break;
+        }
+      } catch (error) {
+        const messageText = error instanceof Error ? error.message : String(error);
+        vscode.window.showErrorMessage(`Sentinel command failed: ${messageText}`);
       }
     });
   }

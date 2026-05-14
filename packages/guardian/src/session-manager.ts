@@ -778,12 +778,12 @@ export class SessionManager extends EventEmitter {
     return override;
   }
 
-  async markContradictionResolved(title: string, note: string): Promise<void> {
+  async markContradictionResolved(id: string, note: string): Promise<void> {
     if (!this.session) {
       return;
     }
     this.activeContradictions = this.activeContradictions.map((item) =>
-      item.id === title || item.title === title
+      item.id === id
         ? {
             ...item,
             status: "resolved",
@@ -798,7 +798,7 @@ export class SessionManager extends EventEmitter {
           contradictions: this.activeContradictions
         }
       : this.latestAnalysis;
-    this.emit(SENTINEL_EVENTS.CONTRADICTION_RESOLVED, title);
+    this.emit(SENTINEL_EVENTS.CONTRADICTION_RESOLVED, id);
   }
 
   async syncGlobalVault(targetDir: string): Promise<void> {

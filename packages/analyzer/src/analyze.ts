@@ -1,4 +1,4 @@
-import { computeHealthScore, FindingRecord, HealthScoreSnapshot, ProjectConfig, SessionRecord, WorkspaceState, FileSnapshot, ContradictionRecord } from "@sentinel/core";
+import { computeHealthScore, FindingRecord, HealthScoreSnapshot, ProjectConfig, SessionRecord, FileSnapshot, ContradictionRecord } from "@sentinel/core";
 import { detectBadPractices } from "./bad-practices.js";
 import { detectContradictions } from "./contradictions.js";
 import { summarizeFile } from "./summarize.js";
