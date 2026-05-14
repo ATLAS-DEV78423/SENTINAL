@@ -144,7 +144,7 @@ export function App({ initialState, onCommand }: AppProps): JSX.Element {
   );
 }
 
-const btnStyle = (bg: string): React.CSSProperties => ({
+export const btnStyle = (bg: string): React.CSSProperties => ({
   background: bg,
   color: "#fff",
   border: "none",

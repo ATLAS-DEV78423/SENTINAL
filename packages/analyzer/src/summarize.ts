@@ -85,12 +85,12 @@ function extractExportedFunctions(content: string): ExportedFunction[] {
     let match: RegExpExecArray | null;
     while ((match = pattern.exec(content))) {
       const name = match[1] ?? "anonymous";
-      const isAsync = Boolean(match[2]);
+      const isAsync = /\basync\b/.test(match[0]);
       const params = (match[3] ?? match[2] ?? "").split(",").map((value) => value.trim()).filter(Boolean);
       results.push({
         name,
         signature: match[0].trim(),
-        async: isAsync || /async\s+function/.test(match[0]),
+        async: isAsync,
         parameters: params.length
       });
     }
